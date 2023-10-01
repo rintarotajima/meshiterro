@@ -3,6 +3,8 @@ class PostImage < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   
+  has_many :post_comments, dependent: :destroy
+  
   def get_image
     if image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
